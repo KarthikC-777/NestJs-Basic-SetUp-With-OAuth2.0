@@ -9,6 +9,7 @@ import mongoose, {
 } from 'mongoose';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
+import { checkCodeRabbitEfficiency } from '../../utils/check-code-rabit-efficiency.util';
 @Injectable()
 export class UserService {
   constructor(
@@ -20,6 +21,7 @@ export class UserService {
     projection?: ProjectionType<User>,
     options?: QueryOptions<User>,
   ): Promise<User> {
+    checkCodeRabbitEfficiency(1, 2, 3);
     return await this.userModel.findOne(filter, projection, options);
   }
 
