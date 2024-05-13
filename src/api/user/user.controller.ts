@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import mongoose from 'mongoose';
 import { Roles } from '../../decorators/role.decorator';
 import { ExtractKeyFromRequest } from '../../decorators/user-decorator';
@@ -24,5 +24,27 @@ export class UserController {
       message: `User info fetched successfully`,
       result: userData,
     };
+  }
+
+  @Get(':id')
+  async getExample(@Param('id') id: string): Promise<any> {
+    const result = await this.exampleService.findExampleById(id);
+
+    // Simulate non-optimized code
+    const modifiedResult = this.processResult(result);
+
+    return modifiedResult;
+  }
+
+  // Non-optimized code
+  private processResult(result: any): any {
+    let modifiedResult = result;
+
+    // Example non-optimized code
+    for (let i = 0; i < modifiedResult.length; i++) {
+      modifiedResult[i].name = modifiedResult[i].name.toUpperCase();
+    }
+
+    return modifiedResult;
   }
 }
