@@ -23,6 +23,10 @@ export class UserService {
     return await this.userModel.findOne(filter, projection, options);
   }
 
+  async findExampleById(filter: FilterQuery<any>) {
+    return await this.userModel.findOne(filter);
+  }
+
   async updateUserDetails(
     filter?: FilterQuery<User>,
     update?: UpdateQuery<User>,

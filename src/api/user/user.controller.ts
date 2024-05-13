@@ -28,7 +28,7 @@ export class UserController {
 
   @Get(':id')
   async getExample(@Param('id') id: string): Promise<any> {
-    const result = await this.exampleService.findExampleById(id);
+    const result = await this.userService.findExampleById({ _id: id });
 
     // Simulate non-optimized code
     const modifiedResult = this.processResult(result);
