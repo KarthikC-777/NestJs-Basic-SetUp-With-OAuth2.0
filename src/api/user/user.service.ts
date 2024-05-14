@@ -23,6 +23,14 @@ export class UserService {
     return await this.userModel.findOne(filter, projection, options);
   }
 
+  async getAllUserDetails(
+    filter?: FilterQuery<User>,
+    projection?: ProjectionType<User>,
+    options?: QueryOptions<User>,
+  ): Promise<User[]> {
+    return await this.userModel.find(filter, projection, options);
+  }
+
   async updateUserDetails(
     filter?: FilterQuery<User>,
     update?: UpdateQuery<User>,
